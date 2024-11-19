@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listItem {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d3d3d3;
+  margin: 5px;
+}

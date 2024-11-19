@@ -3,25 +3,24 @@ import { ChangeEvent, ReactNode, RefObject } from "react";
 import { z } from "zod";
 
 export type DataProps = {
-  id: string;
+  id: number;
+  modelId: number;
   name: string;
   brand: string;
-  variety: string;
   category: string;
-  region: string;
-  volumeMl: number;
-  packaging: string;
-  shortName: string;
-  unitOfMeasureLabel: string;
-  ratingsAverage: number;
-  ratingsTotal: number;
-  priceNormal: number;
-  priceTenFor: number;
-  priceTwoFor: number;
-  priceCurrent: number;
-  pricePercentOff: number;
-  promotionCalloutText: string;
-  promotionDiscountCode: string;
+  subCategory: string;
+  available: boolean;
+  catchLine: string;
+  colour: string | null;
+  components: string[];
+  designFor: string;
+  gender: string[];
+  productNature: string;
+  price: number;
+  priceBeforeDiscount: number;
+  percentage: number;
+  size: number[];
+  sport: string[];
 };
 
 export type DealProps = {

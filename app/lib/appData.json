@@ -1,5 +1,5 @@
 {
   "navItems": ["Mens", "Womens", "Kids"],
-  "imgPath": "/assets/img",
+  "imgPath": "/assets/img/",
   "errorMsg": "Some Errror Message"
 }
