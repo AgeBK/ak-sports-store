@@ -1,6 +1,6 @@
 // data definitions
-import { ChangeEvent, ReactNode, RefObject } from 'react';
-import { z } from 'zod';
+import { ChangeEvent, ReactNode, RefObject } from "react";
+import { z } from "zod";
 
 export type DataProps = {
   id: string;
@@ -30,9 +30,9 @@ export type DealProps = {
   pricePercentOff?: number;
 };
 
-export type CategoryParamsProps = {
-  params: { urlCategory: string; urlVariety: string };
-};
+// export type CategoryParamsProps = {
+//   params: { urlCategory: string; urlSubCategory: string };
+// };
 
 // before item in cart
 export type AddToCartProps = {
@@ -78,7 +78,7 @@ export type ButtonProps = {
   onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void;
   css: string;
   disabled?: boolean;
-  type?: 'submit' | 'reset' | 'button' | undefined;
+  type?: "submit" | "reset" | "button" | undefined;
 };
 
 export type ImgProps = {
@@ -449,7 +449,7 @@ export type SortProps = {
 export type UseCartStateProps = [
   RefObject<HTMLInputElement>,
   boolean,
-  () => void,
+  () => void
 ];
 
 export type PillsProps = {
@@ -480,7 +480,7 @@ export type SignUpSchemaProps = z.ZodEffects<
       password: z.ZodString;
       confirmPassword: z.ZodString;
     },
-    'strip',
+    "strip",
     z.ZodTypeAny,
     {
       firstName: string;
@@ -536,9 +536,9 @@ export type SchemaProps = z.ZodObject<
       ratingsAverage: z.ZodNumber;
       unitOfMeasureLabel: z.ZodString;
     },
-    'id'
+    "id"
   >,
-  'strip',
+  "strip",
   z.ZodTypeAny,
   {
     id?: string;
