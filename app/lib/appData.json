@@ -1,5 +1,10 @@
 {
   "navItems": ["Mens", "Womens", "Kids"],
+  "navSubItems": {
+    "Mens": ["Running", "Soccer", "Hiking", "Tennis"],
+    "Womens": ["Running", "Soccer", "Hiking", "Tennis"],
+    "Kids": ["Running", "Soccer", "Hiking", "Sandals"]
+  },
   "imgPath": "/assets/img/",
   "errorMsg": "Some Errror Message"
 }

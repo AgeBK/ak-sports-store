@@ -3,6 +3,11 @@
 }
 
 .nav {
+  position: fixed;
+  width: 100%;
+}
+
+.list {
   display: flex;
   padding: 5px;
   font-weight: bold;
@@ -24,3 +29,28 @@
   display: flex;
   justify-content: center;
 }
+
+.subNav {
+  display: none;
+}
+
+.subNav0 {
+}
+
+.subNav1 {
+}
+
+.subNav2 {
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+/* .subNav3 {
+  border: 1px solid blue;
+} */

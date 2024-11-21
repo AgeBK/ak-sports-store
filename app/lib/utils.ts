@@ -1,15 +1,21 @@
 import { DataProps } from "./definitions";
 import {
   fetchProductsByCategory,
+  fetchProducstByCatSubCat,
   fetchProductsPriceDrop,
 } from "@/app/lib/data";
 
-const capitalizeFirstLetter = (string: string) => {
-  // string can be multiple words
-  const wordsArr = string
-    .split(" ")
-    .map((val) => val.charAt(0).toUpperCase() + val.slice(1));
-  return wordsArr.join(" ");
+const sentenceCase = (s: string) => {
+  if (s) {
+    return s
+      .toString()
+      .replace(
+        /\w\S*/g,
+        (text: string) =>
+          text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+      );
+  }
+  return s;
 };
 
 export const formatCurrency = (amount: number) => {
@@ -19,16 +25,25 @@ export const formatCurrency = (amount: number) => {
   });
 };
 
+const currency = (val: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(val);
+
 const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
+  console.log(arg1);
+  console.log(arg2);
+
   let arr: DataProps[] = [];
-  if (arg2) {
+  if (arg2?.toString()) {
     switch (arg1) {
-      case "white":
-      case "red":
-      case "sparkling":
-        arr = await fetchProductsByCategoryAndVariety(
-          capitalizeFirstLetter(arg1),
-          capitalizeFirstLetter(arg2)
+      case "mens":
+      case "womens":
+      case "kids":
+        arr = await fetchProducstByCatSubCat(
+          sentenceCase(arg1),
+          sentenceCase(arg2)
         );
         break;
       default:
@@ -42,7 +57,7 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
       case "mens":
       case "womens":
       case "kids":
-        arr = await fetchProductsByCategory(capitalizeFirstLetter(arg1));
+        arr = await fetchProductsByCategory(sentenceCase(arg1));
         break;
       default:
         break;
@@ -72,19 +87,12 @@ const deCamelise = (s: string) => {
   return result.charAt(0).toUpperCase() + result.slice(1);
 };
 
-const sentenceCase = (s: string) => {
-  return s.replace(
-    /\w\S*/g,
-    (text: string) =>
-      text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-  );
-};
-
 export {
   fetchCategoryPageData,
-  capitalizeFirstLetter,
+  // sentenceCase,
   camelise,
   deCamelise,
   cameliseArr,
   sentenceCase,
+  currency,
 };

@@ -1,0 +1,23 @@
+.price {
+  font-size: 18px;
+  display: block;
+}
+
+.was {
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.priceBefore {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.percentage {
+  display: inline-block;
+  padding: 0 2px;
+  background-color: #f00;
+  font-size: 12px;
+  color: #fff;
+}

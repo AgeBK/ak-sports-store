@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { DataProps } from "./definitions";
 import { unstable_noStore as noStore } from "next/cache";
-import { camelise, cameliseArr, capitalizeFirstLetter } from "./utils";
+import { camelise, cameliseArr, sentenceCase } from "./utils";
 
 export async function fetchProducts() {
   // noStore() prevents the response from being cached. (good for dev) TODO
@@ -87,12 +87,12 @@ export async function fetchProducstByCatSubCat(
     const data = await sql<DataProps>`
       SELECT *        
       FROM shoes
-      WHERE category=${capitalizeFirstLetter(category)}
-      AND sub_category=${capitalizeFirstLetter(subCategory)}
+      WHERE category=${sentenceCase(category)}
+      AND sub_category=${sentenceCase(subCategory)}
       `;
 
     const shoes = data.rows;
-    return shoes; // convert db column names to camel case (eg: price_normal to priceNormal)
+    return cameliseArr(shoes); // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error("Database Error:", err);
     throw new Error("Failed to fetch shoes by sub category.");

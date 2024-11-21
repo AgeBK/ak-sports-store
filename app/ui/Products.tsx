@@ -1,21 +1,17 @@
-// message.js
 "use client";
 
 import { use, useState } from "react";
 import Link from "next/link";
 import Image from "@/app/ui/image";
+import Price from "./Price";
 import { DataProps } from "../lib/definitions";
 import { sentenceCase } from "../lib/utils";
 import styles from "@/app/assets/css/Products.module.css";
 
-export default function Products({
-  messagePromise,
-}: {
-  messagePromise: Promise<DataProps[]>;
-}) {
+export default function Products({ data }: { data: Promise<DataProps[]> }) {
   const [hover, setHover] = useState(false);
   const [item, setItem] = useState(0);
-  const messageContent: DataProps[] = use(messagePromise);
+  const messageContent: DataProps[] = use(data);
 
   const handleHover = (isHover: boolean, modelId: number) => {
     setHover(isHover);
@@ -25,15 +21,19 @@ export default function Products({
   return (
     <ul className={styles.list}>
       {messageContent.map((val: DataProps, ind: number) => {
-        const { id, name, category, subCategory, price, modelId } = val;
-        const link = `${category}/${subCategory}/${id}`.toLowerCase();
-        console.log(hover);
-        console.log(typeof item);
-        console.log(modelId);
-
+        const {
+          id,
+          name,
+          category,
+          subCategory,
+          price,
+          priceBeforeDiscount,
+          percentage,
+          modelId,
+        } = val;
+        const link = `/${category}/${subCategory}/${id}`.toLowerCase();
         const imageSrc =
           hover && item === modelId ? `${modelId}-2.jpg` : `${modelId}-1.jpg`;
-
         return (
           <li
             className={styles.listItem}
@@ -42,15 +42,18 @@ export default function Products({
             onMouseLeave={() => handleHover(false, 0)}
           >
             <Link href={link}>
-              <div className={styles.name}>{sentenceCase(name)}</div>
+              <h3 className={styles.name}>{sentenceCase(name)}</h3>
               <Image
                 imgSrc={imageSrc}
                 imgAlt={name}
                 imgWidth={200}
                 imgHeight={200}
               />
-              <div className={styles.price}>{price}</div>
-              <b className={styles.price}>{modelId}</b>
+              <Price
+                price={price}
+                priceBeforeDiscount={priceBeforeDiscount}
+                percentage={percentage}
+              />
             </Link>
           </li>
         );
