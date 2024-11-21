@@ -2,7 +2,7 @@ import { Suspense, use } from "react";
 import { fetchCategoryPageData } from "@/app/lib/utils";
 import { DataProps } from "@/app/lib/definitions";
 import { sentenceCase } from "@/app/lib/utils";
-import Products from "@/app/ui/Products";
+import Products from "@/app/ui/products";
 
 export default function Page({
   params,

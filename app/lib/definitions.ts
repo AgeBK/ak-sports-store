@@ -23,6 +23,11 @@ export type DataProps = {
   sport: string[];
 };
 
+export type CrumbProps = {
+  path: string;
+  name: string;
+};
+
 export type DealProps = {
   priceTwoFor?: number;
   priceTenFor?: number;

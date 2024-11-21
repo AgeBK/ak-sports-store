@@ -1,0 +1,59 @@
+.breadCrumb {
+  padding-top: 60px;
+}
+
+.crumb {
+  color: #555;
+  display: inline-block;
+}
+
+.home {
+  color: green;
+}
+
+.crumbs {
+}
+
+.crumbs ul li {
+  display: inline;
+}
+
+.crumbs ul li a {
+  display: block;
+  height: 13px;
+  background: #d3d3d3;
+  text-align: center;
+  padding: 8px 10px 0 10px;
+  position: relative;
+  margin: 0 10px 0 0;
+  font-size: 11px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.crumbs ul li a span {
+  position: relative;
+  top: -6px;
+  color: #000;
+  left: 5px;
+}
+
+.crumbs ul li a:after {
+  content: "";
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid #fff;
+  border-left: 10px solid #d3d3d3;
+  position: absolute;
+  right: -10px;
+  top: 0;
+}
+
+.crumbs ul li a:before {
+  content: "";
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

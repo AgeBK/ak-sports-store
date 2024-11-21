@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import data from '@/app/lib/appData.json';
-import { ImgProps } from '../lib/definitions';
+import Image from "next/image";
+import data from "@/app/lib/appData.json";
+import { ImgProps } from "../lib/definitions";
 
 export default function Img({
   imgSrc,

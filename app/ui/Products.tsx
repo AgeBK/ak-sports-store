@@ -3,7 +3,7 @@
 import { use, useState } from "react";
 import Link from "next/link";
 import Image from "@/app/ui/image";
-import Price from "./Price";
+import Price from "./price";
 import { DataProps } from "../lib/definitions";
 import { sentenceCase } from "../lib/utils";
 import styles from "@/app/assets/css/Products.module.css";
@@ -13,10 +13,10 @@ export default function Products({ data }: { data: Promise<DataProps[]> }) {
   const [item, setItem] = useState(0);
   const messageContent: DataProps[] = use(data);
 
-  const handleHover = (isHover: boolean, modelId: number) => {
-    setHover(isHover);
-    setItem(modelId);
-  };
+  // const handleHover = (isHover: boolean, modelId: number) => {
+  //   setHover(isHover);
+  //   setItem(modelId);
+  // };
 
   return (
     <ul className={styles.list}>
@@ -38,8 +38,8 @@ export default function Products({ data }: { data: Promise<DataProps[]> }) {
           <li
             className={styles.listItem}
             key={ind}
-            onMouseEnter={() => handleHover(true, modelId)}
-            onMouseLeave={() => handleHover(false, 0)}
+            // onMouseEnter={() => handleHover(true, modelId)}
+            // onMouseLeave={() => handleHover(false, 0)}
           >
             <Link href={link}>
               <h3 className={styles.name}>{sentenceCase(name)}</h3>
@@ -55,6 +55,7 @@ export default function Products({ data }: { data: Promise<DataProps[]> }) {
                 percentage={percentage}
               />
             </Link>
+            <div>{modelId}</div>
           </li>
         );
       })}
