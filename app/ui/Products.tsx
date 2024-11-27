@@ -33,7 +33,7 @@ export default function Products({ data }: { data: Promise<DataProps[]> }) {
         } = val;
         const link = `/${category}/${subCategory}/${id}`.toLowerCase();
         const imageSrc =
-          hover && item === modelId ? `${modelId}-2.jpg` : `${modelId}-1.jpg`;
+          hover && item === modelId ? `${modelId}-2.webp` : `${modelId}-1.webp`;
         return (
           <li
             className={styles.listItem}
