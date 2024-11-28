@@ -1,0 +1,109 @@
+.container {
+  padding: 20px;
+}
+
+.name {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.images {
+  display: flex;
+}
+
+.hdr {
+  margin-bottom: 10px;
+}
+
+.image {
+  flex: 1 1;
+  padding: 10px;
+  border: 1px solid #d3d3d3;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.costSize {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.costSize > * {
+  flex-basis: 100%;
+  min-width: 0;
+}
+
+.cost {
+  margin: 0 10px;
+}
+
+.size {
+  /* flex-wrap: wrap;
+  gap: 15px; */
+}
+
+.info {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.shoeSizes {
+  padding: 5px 10px;
+  /* border-radius: 15px; */
+  border: 1px solid #d3d3d3;
+  background-color: #f6f6f6;
+  margin-right: 10px;
+  display: inline-block;
+  cursor: not-allowed;
+}
+
+.available {
+  border: 1px solid #d3d3d3;
+  font-weight: bold;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.detailsCont {
+  margin: 15px 0;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  background-color: blue;
+  color: #fff;
+}
+
+.details li {
+  border-bottom: 1px solid #d3d3d3;
+  flex: 0 0 40%;
+  display: flex;
+  margin: 0 5%;
+}
+
+.details li span:last-child {
+  margin-left: auto;
+}
+
+.strike {
+  position: relative;
+  color: #d3d3d3;
+  font-weight: bold;
+
+  &:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 45%;
+    right: 0;
+    border-top: 1px solid;
+    border-color: #d3d3d3;
+    -webkit-transform: skewY(-40deg);
+    -moz-transform: skewY(-40deg);
+    transform: skewY(-40deg);
+  }
+}

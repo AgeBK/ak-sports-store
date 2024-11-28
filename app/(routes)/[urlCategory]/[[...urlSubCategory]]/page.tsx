@@ -10,7 +10,7 @@ export default function Page({
   params: Promise<{ urlCategory: string; urlSubCategory: string; id: string }>;
 }) {
   const { urlCategory, urlSubCategory } = use(params);
-  const data: Promise<DataProps[]> = fetchCategoryPageData(
+  const promise: Promise<DataProps[]> = fetchCategoryPageData(
     urlCategory,
     urlSubCategory
   ); // suspense handles await
@@ -21,7 +21,7 @@ export default function Page({
         {sentenceCase(urlCategory)} {sentenceCase(urlSubCategory)}
       </h2>
       <Suspense fallback={<p>⌛Downloading message...</p>}>
-        <Products data={data} />
+        <Products promise={promise} />
       </Suspense>
     </article>
   );

@@ -14,8 +14,8 @@ export default function Header() {
               <Image
                 imgSrc="AK.webp"
                 imgAlt="AK Sports Store"
-                imgWidth={80}
-                imgHeight={50}
+                imgWidth={60}
+                imgHeight={35}
               />
             </Link>
           </div>

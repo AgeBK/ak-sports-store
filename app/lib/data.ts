@@ -10,15 +10,15 @@ export async function fetchProducts() {
   try {
     const data = await sql<DataProps>`
       SELECT *        
-      FROM shoes
+      FROM shoes2
       `;
 
-    const shoes = data.rows;
-    // shoes.reverse();
-    return cameliseArr(shoes);
+    const shoes2 = data.rows;
+    // shoes2.reverse();
+    return cameliseArr(shoes2);
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch shoes.");
+    throw new Error("Failed to fetch shoes2.");
   }
 }
 
@@ -27,31 +27,17 @@ export async function fetchProductById(query: string) {
 
   try {
     const data = await sql<DataProps>`
-      SELECT 
-        "id",
-        "name",
-        "brand",
-        "category",
-        "variety",
-        "short_name",
-        "region",
-        "packaging",
-        "promotion_callout_text",
-        "promotion_discount_code",
-        "unit_of_measure_label",
-        "price_normal",
-        "price_current",
-        "price_ten_for",
-        "price_two_for",
-        "price_percent_off",
-        "volume_ml",
-        "ratings_total",
-        "ratings_average"        
-      FROM shoes
+      SELECT *       
+      FROM shoes2
       WHERE id=${query}
       `;
 
     const product = data.rows[0];
+    console.log("fetchProductById");
+    console.log("query: " + query);
+    console.log("product");
+    console.log(product);
+
     return product ? camelise(product) : undefined; // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error("Database Error:", err);
@@ -65,15 +51,15 @@ export async function fetchProductsByCategory(query: string) {
   try {
     const data = await sql<DataProps>`
       SELECT *        
-      FROM shoes
+      FROM shoes2
       WHERE category=${query}
       `;
 
-    const shoes = data.rows;
-    return cameliseArr(shoes); // convert db column names to camel case (eg: price_normal to priceNormal)
+    const shoes2 = data.rows;
+    return cameliseArr(shoes2); // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch shoes by category.");
+    throw new Error("Failed to fetch shoes2 by category.");
   }
 }
 
@@ -86,16 +72,16 @@ export async function fetchProducstByCatSubCat(
   try {
     const data = await sql<DataProps>`
       SELECT *        
-      FROM shoes
+      FROM shoes2
       WHERE category=${sentenceCase(category)}
       AND sub_category=${sentenceCase(subCategory)}
       `;
 
-    const shoes = data.rows;
-    return cameliseArr(shoes); // convert db column names to camel case (eg: price_normal to priceNormal)
+    const shoes2 = data.rows;
+    return cameliseArr(shoes2); // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch shoes by sub category.");
+    throw new Error("Failed to fetch shoes2 by sub category.");
   }
 }
 
@@ -105,33 +91,33 @@ export async function fetchProductsPriceDrop() {
   try {
     const data = await sql<DataProps>`
       SELECT *        
-      FROM shoes
+      FROM shoes2
       WHERE percentage > 0
       `;
 
-    const shoes = data.rows;
-    return cameliseArr(shoes);
+    const shoes2 = data.rows;
+    return cameliseArr(shoes2);
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch shoes price drop.");
+    throw new Error("Failed to fetch shoes2 price drop.");
   }
 }
 
 export async function fetchCarouselProducts() {
   noStore();
-  // fetch 12 random shoes that are on sale
+  // fetch 12 random shoes2 that are on sale
   try {
     const data = await sql<DataProps>`
-      SELECT * FROM shoes 
+      SELECT * FROM shoes2 
       WHERE percentage > 0
       LIMIT 12
       `;
 
-    const shoes = data.rows;
-    return cameliseArr(shoes);
+    const shoes2 = data.rows;
+    return cameliseArr(shoes2);
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch carousel shoes.");
+    throw new Error("Failed to fetch carousel shoes2.");
   }
 }
 
@@ -140,15 +126,15 @@ export async function fetchCarouselProductsByVariety(query: string) {
 
   try {
     const data = await sql<DataProps>`
-      SELECT * FROM shoes 
+      SELECT * FROM shoes2 
       WHERE variety=${query}
       LIMIT 12
       `;
 
-    const shoes = data.rows;
-    return cameliseArr(shoes);
+    const shoes2 = data.rows;
+    return cameliseArr(shoes2);
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch carousel shoes by variety.");
+    throw new Error("Failed to fetch carousel shoes2 by variety.");
   }
 }

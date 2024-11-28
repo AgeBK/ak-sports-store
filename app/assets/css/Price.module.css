@@ -21,3 +21,18 @@
   font-size: 12px;
   color: #fff;
 }
+
+.product .price {
+  font-size: 28px;
+}
+
+.product .priceBefore {
+  /* display: inline-block;
+  margin-right: 10px; */
+  font-size: 16px;
+}
+
+.price .percentage {
+  padding: 0 4px;
+  font-size: 20px;
+}

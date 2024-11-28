@@ -1,26 +1,25 @@
-import { use } from "react";
-import { fetchProducstByCatSubCat } from "@/app/lib/data";
+import { Suspense, use } from "react";
+import {  fetchProductById } from "@/app/lib/data";
+import Product from "@/app/ui/product";
+import { DataProps } from "@/app/lib/definitions";
 //urlCategory, urlSubCategory
 export default function Page({
   params,
 }: {
-  params: Promise<{ urlCategory: string; urlSubCategory: string; id: string }>;
+  params: Promise<{
+    urlCategory: string;
+    urlSubCategory: string;
+    urlId: string;
+  }>;
 }) {
-  console.log("Page");
-  const { urlCategory, urlSubCategory, id } = use(params);
-
-  const products = async () => {
-    const prods = await fetchProducstByCatSubCat(urlCategory, urlSubCategory); // various db calls based on URL
-    return prods;
-  };
-  products();
+  const promise: Promise<DataProps[]> = fetchProductById(urlId); // suspense handles await
 
   return (
     <article>
-      {/* <Suspense fallback={<Loading />}> */}
-      <h1>
-        PRODUCT PAGE - {urlCategory} {urlSubCategory} {id}
-      </h1>
+      {/* PRODUCT PAGE - {urlCategory} {urlSubCategory} {urlId} */}
+      <Suspense fallback={<p>⌛Downloading message...</p>}>
+        <Product promise={promise} />
+      </Suspense>
     </article>
   );
 }

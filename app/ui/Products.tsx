@@ -8,10 +8,14 @@ import { DataProps } from "../lib/definitions";
 import { sentenceCase } from "../lib/utils";
 import styles from "@/app/assets/css/Products.module.css";
 
-export default function Products({ data }: { data: Promise<DataProps[]> }) {
+export default function Products({
+  promise,
+}: {
+  promise: Promise<DataProps[]>;
+}) {
   const [hover, setHover] = useState(false);
   const [item, setItem] = useState(0);
-  const messageContent: DataProps[] = use(data);
+  const messageContent: DataProps[] = use(promise);
 
   // const handleHover = (isHover: boolean, modelId: number) => {
   //   setHover(isHover);
@@ -53,6 +57,7 @@ export default function Products({ data }: { data: Promise<DataProps[]> }) {
                 price={price}
                 priceBeforeDiscount={priceBeforeDiscount}
                 percentage={percentage}
+                css="Products"
               />
             </Link>
             <div>{modelId}</div>
